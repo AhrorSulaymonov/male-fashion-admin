@@ -21,6 +21,7 @@ const viewsRouter = require("./routes/view.routes");
 app.use("/api", apiRouter);
 app.use("/", viewsRouter);
 
-app.listen(PORT, () => {
+app.listen(PORT, async () => {
+  await mongoose.connect(config.get("dbUri"));
   console.log(`Server started at http://localhost:${PORT}`);
 });

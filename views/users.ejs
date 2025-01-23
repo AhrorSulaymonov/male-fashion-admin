@@ -82,104 +82,16 @@
                   <div class="card-header">
                     <div class="d-flex align-items-center">
                       <h4 class="card-title">Add Row</h4>
-                      <button
-                        class="btn btn-primary btn-round ms-auto"
-                        data-bs-toggle="modal"
-                        data-bs-target="#addRowModal"
-                      >
-                        <i class="fa fa-plus"></i>
-                        Add Row
+                      ><button class="btn btn-primary btn-round ms-auto">
+                        <a href="./add-user.html"
+                          ><i class="fa fa-plus" style="color: white"
+                            >Add User</i
+                          ></a
+                        >
                       </button>
                     </div>
                   </div>
                   <div class="card-body">
-                    <!-- Modal -->
-                    <div
-                      class="modal fade"
-                      id="addRowModal"
-                      tabindex="-1"
-                      role="dialog"
-                      aria-hidden="true"
-                    >
-                      <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                          <div class="modal-header border-0">
-                            <h5 class="modal-title">
-                              <span class="fw-mediumbold"> New</span>
-                              <span class="fw-light"> Row </span>
-                            </h5>
-                            <button
-                              type="button"
-                              class="close"
-                              data-dismiss="modal"
-                              aria-label="Close"
-                            >
-                              <span aria-hidden="true">&times;</span>
-                            </button>
-                          </div>
-                          <div class="modal-body">
-                            <p class="small">
-                              Create a new row using this form, make sure you
-                              fill them all
-                            </p>
-                            <form>
-                              <div class="row">
-                                <div class="col-sm-12">
-                                  <div class="form-group form-group-default">
-                                    <label>Name</label>
-                                    <input
-                                      id="addName"
-                                      type="text"
-                                      class="form-control"
-                                      placeholder="fill name"
-                                    />
-                                  </div>
-                                </div>
-                                <div class="col-md-6 pe-0">
-                                  <div class="form-group form-group-default">
-                                    <label>Position</label>
-                                    <input
-                                      id="addPosition"
-                                      type="text"
-                                      class="form-control"
-                                      placeholder="fill position"
-                                    />
-                                  </div>
-                                </div>
-                                <div class="col-md-6">
-                                  <div class="form-group form-group-default">
-                                    <label>Office</label>
-                                    <input
-                                      id="addOffice"
-                                      type="text"
-                                      class="form-control"
-                                      placeholder="fill office"
-                                    />
-                                  </div>
-                                </div>
-                              </div>
-                            </form>
-                          </div>
-                          <div class="modal-footer border-0">
-                            <button
-                              type="button"
-                              id="addRowButton"
-                              class="btn btn-primary"
-                            >
-                              Add
-                            </button>
-                            <button
-                              type="button"
-                              class="btn btn-danger"
-                              data-dismiss="modal"
-                            >
-                              Close
-                            </button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
                     <div class="table-responsive">
                       <table
                         id="add-row"
@@ -187,25 +99,67 @@
                       >
                         <thead>
                           <tr>
+                            <th>_id</th>
                             <th>Name</th>
-                            <th>Position</th>
-                            <th>Office</th>
+                            <th>Surname</th>
+                            <th>Phone</th>
+                            <th>Email</th>
+                            <th>active</th>
                             <th style="width: 10%">Action</th>
                           </tr>
                         </thead>
                         <tfoot>
                           <tr>
+                            <th>_id</th>
                             <th>Name</th>
-                            <th>Position</th>
-                            <th>Office</th>
-                            <th>Action</th>
+                            <th>Surname</th>
+                            <th>Phone</th>
+                            <th>Email</th>
+                            <th>active</th>
                           </tr>
                         </tfoot>
-                        <tbody>
+                        <tbody id="userRowWrapper">
+                          <% usersdt.forEach(async function(userdt) {%>
                           <tr>
-                            <td>Tiger Nixon</td>
-                            <td>System Architect</td>
-                            <td>Edinburgh</td>
+                            <td><%= userdt._id %></td>
+                            <td><%= userdt.name %></td>
+                            <td><%= userdt.surname %></td>
+                            <td><%= userdt.phone %></td>
+                            <td><%= userdt.email %></td>
+                            <td><%= userdt.is_active %></td>
+                            <td>
+                              <div class="form-button-action">
+                                <button
+                                  onclick="editUser('<%=userdt._id%>')"
+                                  type="button"
+                                  data-bs-toggle="tooltip"
+                                  title="Edit Task"
+                                  class="btn btn-link btn-primary btn-lg"
+                                  data-original-title="Edit Task"
+                                >
+                                  <i class="fa fa-edit"></i>
+                                </button>
+                                <button
+                                  onclick="removeUser('<%=userdt._id%>')"
+                                  type="button"
+                                  data-bs-toggle="tooltip"
+                                  title="Remove"
+                                  class="btn btn-link btn-danger"
+                                  data-original-title="Remove"
+                                >
+                                  <i class="fa fa-times"></i>
+                                </button>
+                              </div>
+                            </td>
+                          </tr>
+                          <% }) %>
+                          <tr>
+                            <td>6790f281163760c308fac1a3</td>
+                            <td>a</td>
+                            <td>a</td>
+                            <td>8944448088</td>
+                            <td>a@a.com</td>
+                            <td>true</td>
                             <td>
                               <div class="form-button-action">
                                 <button
@@ -230,9 +184,12 @@
                             </td>
                           </tr>
                           <tr>
-                            <td>Garrett Winters</td>
-                            <td>Accountant</td>
-                            <td>Tokyo</td>
+                            <td>6790f281163760c308fac1a1</td>
+                            <td>a1</td>
+                            <td>a1</td>
+                            <td>8944448081</td>
+                            <td>a1@a.com</td>
+                            <td>false</td>
                             <td>
                               <div class="form-button-action">
                                 <button
@@ -265,11 +222,13 @@
             </div>
           </div>
         </div>
+
         <!-- FOOTER IMPORT -->
         <%- include("./partials/footer.ejs") %>
       </div>
     </div>
     <!--   Core JS Files   -->
+    <script src="./js/user.js"></script>
     <script src="../assets/js/core/jquery-3.7.1.min.js"></script>
     <script src="../assets/js/core/popper.min.js"></script>
     <script src="../assets/js/core/bootstrap.min.js"></script>
@@ -284,8 +243,10 @@
     <script src="../assets/js/setting-demo2.js"></script>
     <script>
       $(document).ready(function () {
+        // Basic DataTables
         $("#basic-datatables").DataTable({});
 
+        // Multi-Filter Select
         $("#multi-filter-select").DataTable({
           pageLength: 5,
           initComplete: function () {
@@ -299,7 +260,6 @@
                   .appendTo($(column.footer()).empty())
                   .on("change", function () {
                     var val = $.fn.dataTable.util.escapeRegex($(this).val());
-
                     column
                       .search(val ? "^" + val + "$" : "", true, false)
                       .draw();
@@ -317,27 +277,39 @@
               });
           },
         });
-
-        // Add Row
-        $("#add-row").DataTable({
-          pageLength: 5,
-        });
-
-        var action =
-          '<td> <div class="form-button-action"> <button type="button" data-bs-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task"> <i class="fa fa-edit"></i> </button> <button type="button" data-bs-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove"> <i class="fa fa-times"></i> </button> </div> </td>';
-
-        $("#addRowButton").click(function () {
-          $("#add-row")
-            .dataTable()
-            .fnAddData([
-              $("#addName").val(),
-              $("#addPosition").val(),
-              $("#addOffice").val(),
-              action,
-            ]);
-          $("#addRowModal").modal("hide");
+        // Add Row DataTable
+        const table = $("#add-row").DataTable({
+          pageLength: 7,
         });
       });
+
+      // Edit tugmasi funksiyasi
+      function editUser(userId) {
+        // Foydalanuvchini user sahifasiga o’tkazish
+        window.location.href = `/user/${userId}`;
+      }
+
+      // Remove tugmasi funksiyasi
+      function removeUser(userId) {
+        if (confirm("Haqiqatan ham ushbu foydalanuvchini o'chirmoqchimisiz?")) {
+          fetch(`/user/${userId}`, {
+            method: "DELETE",
+          })
+            .then((response) => {
+              if (response.ok) {
+                alert("Foydalanuvchi muvaffaqiyatli o'chirildi.");
+                // O'chirilib bo'lgandan keyin sahifani yangilash
+                location.reload();
+              } else {
+                alert("Xatolik yuz berdi. Foydalanuvchi o'chirilmadi.");
+              }
+            })
+            .catch((error) => {
+              console.error("Xatolik:", error);
+              alert("Xatolik yuz berdi. Foydalanuvchi o'chirilmadi.");
+            });
+        }
+      }
     </script>
   </body>
 </html>

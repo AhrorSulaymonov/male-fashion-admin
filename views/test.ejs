@@ -1,0 +1,18 @@
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% users.forEach(user => { %>
+    <tr>
+      <td><%= user._id %></td>
+      <td><%= user.name %></td>
+    </tr>
+    <% }) %>
+    <script src="./js/user.js"></script>
+    
+  </tbody>
+</table>

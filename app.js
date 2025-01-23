@@ -9,7 +9,8 @@ const PORT = config.get("port");
 const app = express();
 app.use(express.json());
 app.use(cookieParser());
-
+// JSON va URL encoded ma'lumotlarni parse qilish
+app.use(express.urlencoded({ extended: true }));
 app.engine("ejs", ejs.__express);
 app.set("view engine", "ejs");
 app.set("views", "views");
@@ -17,11 +18,10 @@ app.use(express.static("views"));
 
 const apiRouter = require("./routes/index.routes");
 const viewsRouter = require("./routes/view.routes");
-
 app.use("/api", apiRouter);
 app.use("/", viewsRouter);
 
 app.listen(PORT, async () => {
   await mongoose.connect(config.get("dbUri"));
-  console.log(`Server started at http://localhost:${PORT}`);
+  console.log(`Server is running on port http://localhost:${PORT}`);
 });

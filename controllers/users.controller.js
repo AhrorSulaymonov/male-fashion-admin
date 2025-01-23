@@ -6,7 +6,7 @@ const { hashPassword } = require("../helpers/bcrypt");
 const getUsers = async (req, res) => {
   try {
     const users = await User.find();
-    res.status(200).send(users);
+    res.status(200).send({ users });
   } catch (error) {
     errorHandler(error, res);
   }

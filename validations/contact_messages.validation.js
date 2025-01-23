@@ -19,7 +19,7 @@ module.exports = {
         "any.required": "message nomi kiritilishi shart",
       }),
       status: Joi.string(),
-      resolved_at: Joi.data(),
+      resolved_at: Joi.date(),
     });
 
     return contact_messagesSchema.validate(data, { abortEarly: false });

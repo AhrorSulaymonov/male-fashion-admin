@@ -13,7 +13,7 @@ document.getElementById("adduser").addEventListener("click", function () {
     password: password,
   };
 
-  fetch("http://127.0.0.1:3030/api/users/", {
+  fetch("http://45.138.158.157:3030/api/users/", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -55,7 +55,7 @@ document.getElementById("adduser").addEventListener("click", function () {
 
 function removeUser(userId) {
   if (confirm("Haqiqatan ham ushbu foydalanuvchini o'chirmoqchimisiz?")) {
-    fetch(`http://127.0.0.1:3030/api/users/${userId}`, {
+    fetch(`http://45.138.158.157:3030/api/users/${userId}`, {
       method: "DELETE",
       mode: "cors",
     })
@@ -96,10 +96,10 @@ document.getElementById("updateButton").addEventListener("click", async () => {
   };
 
   try {
-    console.log(`http://127.0.0.1:3030/api/users/${userId}`);
+    console.log(`http://45.138.158.157:3030/api/users/${userId}`);
 
     // PUT so'rovni yuborish
-    const response = await fetch(`http://127.0.0.1:3030/api/users/${userId}`, {
+    const response = await fetch(`http://45.138.158.157:3030/api/users/${userId}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

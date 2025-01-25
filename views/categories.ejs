@@ -144,10 +144,20 @@
                 </div>
 
                 <div class="table-responsive">
-                  <div
-                    id="add-row_wrapper"
-                    class="dataTables_wrapper container-fluid dt-bootstrap4"
-                  >
+                   <div class="card-header">
+                    <div class="d-flex align-items-center">
+                      <h4 class="card-title">Add Row</h4>
+                      >
+                      <button
+                        class="btn btn-primary btn-round ms-auto"
+                        id="addmodal"
+                        data-bs-toggle="modal"
+                        data-bs-target="#exampleModal"
+                      >
+                        <i class="fa fa-plus" style="color: white">Add Categor</i>
+                      </button>
+                    </div>
+                  </div>
                     <div class="row">
                       <div class="col-sm-12 col-md-6">
                         <div class="dataTables_length" id="add-row_length">
@@ -387,6 +397,7 @@
     <script src="assets/js/core/jquery-3.7.1.min.js"></script>
     <script src="assets/js/core/popper.min.js"></script>
     <script src="assets/js/core/bootstrap.min.js"></script>
+
 
     <!-- jQuery Scrollbar -->
     <script src="assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>

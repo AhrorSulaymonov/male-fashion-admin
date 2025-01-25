@@ -3,12 +3,15 @@ const config = require("config");
 const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
 const ejs = require("ejs");
+const cors = require("cors");
 
 const PORT = config.get("port");
 
 const app = express();
 app.use(express.json());
 app.use(cookieParser());
+app.use(cors());
+
 // JSON va URL encoded ma'lumotlarni parse qilish
 app.use(express.urlencoded({ extended: true }));
 app.engine("ejs", ejs.__express);
